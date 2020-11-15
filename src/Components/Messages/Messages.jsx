@@ -28,14 +28,14 @@ function Messages(props) {
                {dialogElements}
             </ul>
          </div>
-         <div className={s.vl}></div>
+         <div className={s.vl}/>
          <div className={s.chatItems}>
             {chatElements}
             <div className={s.sending}>
                <textarea placeholder="your message" name="sending" id="sending" cols="70" rows="2"
                          value={props.messagePage.newChatText}
                          onChange={ onChangeMessage }
-                         ref={sendElement}></textarea>
+                         ref={sendElement}/>
                <button onClick={sendMessage}>send</button>
             </div>
          </div>

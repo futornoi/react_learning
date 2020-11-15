@@ -47,7 +47,7 @@ export let addPost = () => {
       likesCount: 0,
    }
 
-   if(newPost.message == '') {
+   if(newPost.message === '') {
      return ''
    }
    

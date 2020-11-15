@@ -6,7 +6,6 @@ import Navigation from './Components/Nav/Nav';
 import Profile from './Components/Profile/Profile';
 import Messages from './Components/Messages/Messages';
 import News from "./Components/News/News";
-import {updateNewChatText} from "./redux/state";
 
 
 function App(props) {
