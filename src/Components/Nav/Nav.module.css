@@ -1,0 +1,24 @@
+
+.navbar {
+	grid-area: navbar;
+	background-color: rgba(124, 219, 95, 0.801);
+}
+
+.item {
+	color: transparent;
+}
+
+.item a {
+	text-decoration: none;
+	color: #ffffff;
+}
+
+.item a:hover {
+	text-decoration: none;
+	color: rgb(175, 111, 27);
+	transition: 0.3s;
+}
+
+.item .active {
+	color: rgb(175, 111, 27);
+}

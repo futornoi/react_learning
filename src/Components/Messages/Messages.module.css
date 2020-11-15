@@ -1,0 +1,63 @@
+.messages {
+	display: grid;
+	grid-template-columns: 3fr 1fr 8fr;
+}
+
+.vl {
+	border-left: 1px solid #83a77f;
+}
+
+.title {
+	text-transform: uppercase;
+	font-weight: 400;
+	margin: 0;
+	
+}
+
+.dialogItems .active {
+	font-size: 15px;
+	font-weight: 650;
+}
+
+.dialog a {
+	text-decoration: none;
+	color: #000;
+}
+
+.dialog {
+	padding: 10px;
+	color: #6a5858;
+}
+
+.chatItems {
+	position: relative;
+}
+
+.sending {
+	position: absolute;
+	bottom: 0;
+}
+
+.sending textarea {
+	position: relative;
+	resize: none;
+	background-color: rgba(124, 219, 95, 0.301);
+	border: 1px solid rgba(78, 135, 60, 0.8);
+	border-radius: 15px;
+	outline: none;
+}
+
+.sending textarea::placeholder {
+	color: grey;
+	text-align: center;
+}
+
+.sending button {
+	height: 36px;
+	position: absolute;
+	right: 0;
+	border-radius: 15px;
+	border: 1px solid rgba(78, 135, 60, 0.8);
+	background-color: rgba(78, 106, 66, 0.3);
+	outline: none;
+}
