@@ -1,7 +1,8 @@
 
 .navbar {
 	grid-area: navbar;
-	background-color: rgba(124, 219, 95, 0.801);
+	background-color: rgba(71, 146, 43, 0.8);
+	border-radius: 5px;
 }
 
 .item {

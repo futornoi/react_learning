@@ -14,15 +14,18 @@ function App(props) {
          <Header/>
          <Navigation/>
          <div className="app-wrapper-content">
+            {/*Profile */}
             <Route path='/profile' render={() => <Profile
                profilePage={props.state.profilePage}
                addPost={props.addPost}
                updateNewPostText={props.updateNewPostText}/>}
             />
+            {/*Messages*/}
             <Route path='/messages' render={() => <Messages
                messagePage={props.state.messagesPage}
                sendMessage={props.sendMessage}
                updateNewChatText={props.updateNewChatText}/>}/>
+            {/* News */}
             <Route path='/news' render={() => <News/>}/>
          </div>
       </div>
