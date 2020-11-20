@@ -1,4 +1,5 @@
 let store = {
+    _callSubscriber() {},
     _state: {
 
         profilePage: {
@@ -39,48 +40,48 @@ let store = {
     getStore() {
         return this._state;
     },
-
-    addPost() {
-
-        let newPost = {
-            id: 3,
-            imgSrc: 'https://www.meme-arsenal.com/memes/1f8bcb1ffd738deb59afda95521079a9.jpg',
-            message: this._state.profilePage.newPostText,
-            likesCount: 0,
-        }
-
-        if (newPost.message === '') {
-            return ''
-        }
-
-        this._state.profilePage.postData.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
-    },
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state);
-    },
-
-    sendMessage() {
-        let newMessage = {
-            id: 5,
-            message: this._state.messagesPage.newChatText,
-        }
-        this._state.messagesPage.chatData.push(newMessage);
-        this._state.messagesPage.newChatText = '';
-        this._callSubscriber(this._state)
-    },
-    updateNewChatText(messages) {
-        this._state.messagesPage.newChatText = messages;
-        this._callSubscriber(this._state)
-    },
-
-    _callSubscriber() {
-    },
     subscribe(observer) {
         this._callSubscriber = observer;
+    },
+
+    dispatch(action) {
+        debugger
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 3,
+                imgSrc: 'https://www.meme-arsenal.com/memes/1f8bcb1ffd738deb59afda95521079a9.jpg',
+                message: this._state.profilePage.newPostText,
+                likesCount: 0,
+            }
+
+            if (newPost.message === '') {
+                return ''
+            }
+
+            this._state.profilePage.postData.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._callSubscriber(this._state);
+        }
+        else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        }
+        else if (action.type === 'SEND-MESSAGE') {
+            let newMessage = {
+                id: 5,
+                message: this._state.messagesPage.newChatText,
+            }
+            this._state.messagesPage.chatData.push(newMessage);
+            this._state.messagesPage.newChatText = '';
+            this._callSubscriber(this._state)
+        }
+        else if (action.type === 'UPDATE-NEW-CHAT-TEXT') {
+            this._state.messagesPage.newChatText = action.messages;
+            this._callSubscriber(this._state)
+        }
     }
+
+
 }
 
 

@@ -6,42 +6,43 @@ import Chat from "./Chat/Chat";
 
 function Messages(props) {
 
-   let dialogElements = props.messagePage.dialogData.map(d => <DialogItem id={d.id} name={d.name}/>);
-   let chatElements = props.messagePage.chatData.map(c => <Chat message={c.message}/>);
+    let dialogElements = props.messagePage.dialogData.map(d => <DialogItem id={d.id} name={d.name}/>);
+    let chatElements = props.messagePage.chatData.map(c => <Chat message={c.message}/>);
 
-   let sendElement = React.createRef();
+    let sendElement = React.createRef();
 
-   let sendMessage = () => {
-      props.sendMessage();
-   }
+    let sendMessage = () => {
+        props.dispatch({type: 'SEND-MESSAGE'});
+    }
 
-   let onChangeMessage = () => {
-      let text = sendElement.current.value;
-      props.updateNewChatText(text);
-   }
+    let onChangeMessage = () => {
 
-   return (
-      <div className={s.messages}>
-         <div className={s.dialogItems}>
-            <h2 className={s.title}>Dialogs</h2>
-            <ul>
-               {dialogElements}
-            </ul>
-         </div>
-         <div className={s.vl}/>
-         <div className={s.chatItems}>
-            {chatElements}
-            <div className={s.sending}>
+        let text = sendElement.current.value;
+        props.dispatch({type: 'UPDATE-NEW-CHAT-TEXT', messages: text});
+    }
+
+    return (
+        <div className={s.messages}>
+            <div className={s.dialogItems}>
+                <h2 className={s.title}>Dialogs</h2>
+                <ul>
+                    {dialogElements}
+                </ul>
+            </div>
+            <div className={s.vl}/>
+            <div className={s.chatItems}>
+                {chatElements}
+                <div className={s.sending}>
                <textarea placeholder="your message" name="sending" id="sending" cols="70" rows="2"
                          value={props.messagePage.newChatText}
-                         onChange={ onChangeMessage }
+                         onChange={onChangeMessage}
                          ref={sendElement}/>
-               <button onClick={sendMessage}>send</button>
+                    <button onClick={sendMessage}>send</button>
+                </div>
             </div>
-         </div>
 
-      </div>
-   );
+        </div>
+    );
 }
 
 
