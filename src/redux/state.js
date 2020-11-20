@@ -45,7 +45,6 @@ let store = {
     },
 
     dispatch(action) {
-        debugger
         if (action.type === 'ADD-POST') {
             let newPost = {
                 id: 3,
@@ -80,9 +79,17 @@ let store = {
             this._callSubscriber(this._state)
         }
     }
-
-
 }
+
+const SEND_MESSAGE= 'SEND-MESSAGE';
+const UPDATE_NEW_CHAT_TEXT = 'UPDATE-NEW-CHAT-TEXT';
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+
+export const sendMessageActionCreator = () => ({type: SEND_MESSAGE});
+export const UpdateNewChatTextActionCreator = (text) => ({type: UPDATE_NEW_CHAT_TEXT, messages: text});
+export const addPostActionCreator = () => ({type: ADD_POST})
+export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
 
 
 export default store;

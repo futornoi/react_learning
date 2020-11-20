@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Messages.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Chat from "./Chat/Chat";
-
+import {sendMessageActionCreator, UpdateNewChatTextActionCreator} from "../../redux/state";
 
 function Messages(props) {
 
@@ -12,13 +12,12 @@ function Messages(props) {
     let sendElement = React.createRef();
 
     let sendMessage = () => {
-        props.dispatch({type: 'SEND-MESSAGE'});
+        props.dispatch(sendMessageActionCreator());
     }
 
     let onChangeMessage = () => {
-
         let text = sendElement.current.value;
-        props.dispatch({type: 'UPDATE-NEW-CHAT-TEXT', messages: text});
+        props.dispatch(UpdateNewChatTextActionCreator(text));
     }
 
     return (
