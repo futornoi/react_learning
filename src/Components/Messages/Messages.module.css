@@ -31,7 +31,14 @@
 .chatItems {
 	position: relative;
 }
+.message {
+	height: 250px;
+	overflow: auto;
+}
 
+
+
+/*SENDING*/
 .sending {
 	position: absolute;
 	bottom: 0;

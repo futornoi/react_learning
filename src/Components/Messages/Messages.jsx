@@ -9,14 +9,12 @@ function Messages(props) {
     let dialogElements = props.messagePage.dialogData.map(d => <DialogItem id={d.id} name={d.name}/>);
     let chatElements = props.messagePage.chatData.map(c => <Chat message={c.message}/>);
 
-    let sendElement = React.createRef();
-
     let sendMessage = () => {
         props.dispatch(sendMessageActionCreator());
     }
 
-    let onChangeMessage = () => {
-        let text = sendElement.current.value;
+    let onChangeMessage = (e) => {
+        let text = e.target.value;
         props.dispatch(UpdateNewChatTextActionCreator(text));
     }
 
@@ -30,12 +28,14 @@ function Messages(props) {
             </div>
             <div className={s.vl}/>
             <div className={s.chatItems}>
-                {chatElements}
+                <div className={s.message}>
+                    {chatElements}
+                </div>
                 <div className={s.sending}>
                <textarea placeholder="your message" name="sending" id="sending" cols="70" rows="2"
+                         autoFocus
                          value={props.messagePage.newChatText}
-                         onChange={onChangeMessage}
-                         ref={sendElement}/>
+                         onChange={onChangeMessage}/>
                     <button onClick={sendMessage}>send</button>
                 </div>
             </div>
