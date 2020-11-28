@@ -1,7 +1,7 @@
 import profileReducer from "./profile-reducer";
 import messagesReducer from "./messages-reducer";
 
-let store = {
+let second_store = {
     _callSubscriber() {},
     _state: {
         profilePage: {
@@ -39,7 +39,7 @@ let store = {
             newChatText: '',
         },
     },
-    getStore() {
+    getState() {
         return this._state;
     },
     subscribe(observer) {
@@ -54,5 +54,5 @@ let store = {
     }
 }
 
-export default store;
-window.store = store;
+export default second_store;
+window.store = second_store;
