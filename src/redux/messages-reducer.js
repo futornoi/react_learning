@@ -20,21 +20,26 @@ let initialStore = {
     newChatText: '',
 };
 
-const messagesReducer = (store = initialStore, action) => {
+const messagesReducer = (state = initialStore, action) => {
     switch (action.type) {
-        case 'SEND-MESSAGE':
+        case 'SEND-MESSAGE': {
             let newMessage = {
                 id: 5,
-                message: store.newChatText,
+                message: state.newChatText,
             }
-            store.chatData.push(newMessage);
-            store.newChatText = '';
-            return store;
-        case 'UPDATE-NEW-CHAT-TEXT':
-            store.newChatText = action.messages;
-            return store;
+            let stateCopy = {...state};
+            stateCopy.chatData = [...state.chatData]
+            stateCopy.chatData.push(newMessage);
+            stateCopy.newChatText = '';
+            return stateCopy;
+        }
+        case 'UPDATE-NEW-CHAT-TEXT': {
+            let stateCopy = {...state};
+            stateCopy.newChatText = action.messages;
+            return stateCopy;
+        }
         default:
-            return store;
+            return state;
     }
 }
 
