@@ -8,17 +8,17 @@ import News from "./Components/News/News";
 import MessagesContainer from "./Components/Messages/MessagesContainer";
 
 
-function App(props) {
+function App() {
     return (
         <div className="app-wrapper">
             <Header/>
             <Navigation/>
             <div className="app-wrapper-content">
                 {/*Profile */}
-                <Route path='/profile' render={() => <Profile store={props.store}/>}
+                <Route path='/profile' render={() => <Profile />}
                 />
                 {/*Messages*/}
-                <Route path='/messages' render={() => <MessagesContainer store={props.store}/>}/>
+                <Route path='/messages' render={() => <MessagesContainer />}/>
                 {/* News */}
                 <Route path='/news' render={() => <News/>}/>
             </div>
