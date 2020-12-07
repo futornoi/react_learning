@@ -6,15 +6,13 @@ import s from './MyPosts.module.css'
 function MyPosts(props) {
 
    let postElements = props.postData.map(p => <Post img_src={p.imgSrc} message={p.message} likesCount={p.likesCount}/>);
-   let newPostElement = React.createRef()
-
 
    let addPost = () => {
       props.addPost();
    }
 
-   let onChangePost = () => {
-      let text = newPostElement.current.value;
+   let onChangePost = (e) => {
+      let text = e.target.value;
       props.onChangePost(text);
    }
 
@@ -28,7 +26,6 @@ function MyPosts(props) {
                <textarea
                   placeholder="you news..." name="post" id="post" cols="100" rows="2"
                   value={props.newPostText}
-                  ref={newPostElement}
                   onChange={onChangePost}/>
                <button onClick={addPost}>Send</button>
             </div>
