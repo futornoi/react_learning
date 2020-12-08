@@ -11,6 +11,8 @@ function Navigation() {
                 <li className={s.item}><NavLink to="/news" activeClassName={s.active}>News</NavLink></li>
                 <li className={s.item}><a href="#">Music</a></li>
                 <li className={s.item}></li>
+                <li className={s.item}><NavLink to="/users" activeClassName={s.active}>Users</NavLink></li>
+                <li className={s.item}></li>
                 <li className={s.item}><a href="#">Settings</a></li>
             </ul>
         </nav>

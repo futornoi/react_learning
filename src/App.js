@@ -6,6 +6,7 @@ import Navigation from './Components/Nav/Nav';
 import Profile from './Components/Profile/Profile';
 import News from "./Components/News/News";
 import MessagesContainer from "./Components/Messages/MessagesContainer";
+import UsersContainer from "./Components/Users/UsersContainer";
 
 
 function App() {
@@ -20,7 +21,9 @@ function App() {
                 {/*Messages*/}
                 <Route path='/messages' render={() => <MessagesContainer />}/>
                 {/* News */}
-                <Route path='/news' render={() => <News/>}/>
+                <Route path='/news' render={() => <News />}/>
+                {/*Users*/}
+                <Route path='/users' render={() => <UsersContainer />}/>
             </div>
         </div>
     );
