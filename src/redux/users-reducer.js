@@ -4,41 +4,7 @@ const SET_USERS = 'SET-USERS';
 
 
 let initialState = {
-   users: [
-      {
-         id: 1,
-         avatar: 'https://i.pinimg.com/236x/74/05/5f/74055f83bfbdc20fdc1f9d1fc116fd26.jpg',
-         name: 'Maks',
-         location: {
-            country: 'Ukraine',
-            city: 'Odessa',
-         },
-         status: 'i\'m future boss',
-         following: true,
-      },
-      {
-         id: 2,
-         avatar: 'https://i.pinimg.com/236x/74/05/5f/74055f83bfbdc20fdc1f9d1fc116fd26.jpg',
-         name: 'Maks2',
-         location: {
-            country: 'Ukraine2',
-            city: 'Odessa2',
-         },
-         status: 'i\'m future boss2',
-         following: false,
-      },
-      {
-         id: 3,
-         avatar: 'https://i.pinimg.com/236x/74/05/5f/74055f83bfbdc20fdc1f9d1fc116fd26.jpg',
-         name: 'Maks3',
-         location: {
-            country: 'Ukraine3',
-            city: 'Odessa3',
-         },
-         status: 'i\'m future boss3',
-         following: true,
-      },
-   ]
+   users: []
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -53,23 +19,26 @@ const usersReducer = (state = initialState, action) => {
                      following: true,
                   }
                }
+               return u;
             })
          }
       case 'UNFOLLOW':
          return {
             ...state,
-            users: state.users.map((u) => {
+            users: state.users.map(u => {
                if(u.id === action.userId) {
                   return {
                      ...u,
                      following: false,
                   }
                }
+               return u;
             })
          }
-      case 'SET-FOLLOW':
+      case 'SET-USERS':
          return {
-            ...state, users: [...state.users, ...action.users]
+            ...state,
+            users: [...state.users, ...action.users]
          }
       default:
          return state;
