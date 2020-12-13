@@ -1,46 +1,17 @@
 import React from 'react';
 import style from './Users.module.css'
 import s from "../Messages/Messages.module.css";
+import * as axios from 'axios';
+import avatar from '../../assets/images/icon.png'
 
 
 function Users(props) {
    if (props.users.length === 0) {
-      props.setUsers([
-         {
-            id: 1,
-            avatar: 'https://i.pinimg.com/236x/74/05/5f/74055f83bfbdc20fdc1f9d1fc116fd26.jpg',
-            name: 'Maks',
-            location: {
-               country: 'Ukraine',
-               city: 'Odessa',
-            },
-            status: 'i\'m future boss',
-            following: true,
-         },
-         {
-            id: 2,
-            avatar: 'https://i.pinimg.com/236x/74/05/5f/74055f83bfbdc20fdc1f9d1fc116fd26.jpg',
-            name: 'Maks2',
-            location: {
-               country: 'Ukraine2',
-               city: 'Odessa2',
-            },
-            status: 'i\'m future boss2',
-            following: false,
-         },
-         {
-            id: 3,
-            avatar: 'https://i.pinimg.com/236x/74/05/5f/74055f83bfbdc20fdc1f9d1fc116fd26.jpg',
-            name: 'Maks3',
-            location: {
-               country: 'Ukraine3',
-               city: 'Odessa3',
-            },
-            status: 'i\'m future boss3',
-            following: true,
-         },
-      ])
+      axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+         props.setUsers(response.data.items)
+      })
    }
+
 
    return <div>
       <h2 className={s.title}>Users</h2>
@@ -48,7 +19,7 @@ function Users(props) {
          <div className={style.mainInfo}>
             <div>
                <div className={style.avatar}>
-                  <img src={u.avatar} alt=""/>
+                  <img src={u.photos.large != null ? u.photos.large : avatar} alt=""/>
                </div>
             </div>
 
@@ -58,8 +29,8 @@ function Users(props) {
                   <div className={style.userStatus}>{u.status}</div>
                </div>
                <div className={style.location}>
-                  <div>{u.location.country},</div>
-                  <div>{u.location.city}</div>
+                  <div>{'u.location.country'},</div>
+                  <div>{'u.location.city'}</div>
                </div>
             </div>
          </div>
