@@ -6,19 +6,38 @@ import avatar from '../../assets/images/icon.png'
 
 
 class Users extends React.Component{
-   constructor(props) {
-      super(props);
+   componentDidMount() {
+      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.page}&count=${this.props.count}`).then(response => {
+         this.props.setUsers(response.data.items);
+         // this.props.totalCount(response.data.totalCount);
+      })
+   }
 
-
-      axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-         props.setUsers(response.data.items)
+   onPageChanger = (pageNumber) => {
+      this.props.pageChanger(pageNumber)
+      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.count}`).then(response => {
+         this.props.setUsers(response.data.items);
       })
    }
 
    render() {
+
+      let pages = [];
+      let pagesCount = Math.ceil(this.props.totalPages / this.props.count);
+
+      for (let i = 1; i <= pagesCount; i++) {
+         pages.push(i);
+      }
+
       return (
          <div>
             <h2 className={s.title}>Users</h2>
+
+            <div className={style.pages}>{
+               pages.map((p) => <span onClick={() => {this.onPageChanger(p)}} className={this.props.page === p && style.selectedPage}>{p}</span>)
+            }</div>
+
+
             {this.props.users.map((u) => <div className={style.following} key={u.id}>
                <div className={style.mainInfo}>
                   <div>
