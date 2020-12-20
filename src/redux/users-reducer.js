@@ -3,13 +3,15 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const PAGE_CHANGER = 'PAGE-CHANGER';
 const TOTAL_COUNT = 'TOTAL-COUNT';
+const TOTAL_FETCHING = 'TOTAL-FETCHING';
 
 
 let initialState = {
    users: [],
    count: 10,
-   page: 3,
+   page: 1,
    totalPages: 90,
+   isFetching: false,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -55,16 +57,22 @@ const usersReducer = (state = initialState, action) => {
             ...state,
             totalPages: action.totalCount
          }
+      case 'TOTAL-FETCHING':
+         return {
+            ...state,
+            isFetching: action.isFetching,
+         }
       default:
          return state;
    }
 }
 
 
-export const followAC = (userId) => ({type: FOLLOW, userId})
-export const unfollowAC = (userId) => ({type: UNFOLLOW, userId})
-export const setUsersAC = (users) => ({type: SET_USERS, users})
-export const pageChangerAC = (page) => ({type: PAGE_CHANGER, page})
-export const totalCountAC = (totalCount) => ({type: TOTAL_COUNT, totalCount})
+export const followed = (userId) => ({type: FOLLOW, userId})
+export const unfollow = (userId) => ({type: UNFOLLOW, userId})
+export const setUsers = (users) => ({type: SET_USERS, users})
+export const pageChanger = (page) => ({type: PAGE_CHANGER, page})
+export const totalCount = (totalCount) => ({type: TOTAL_COUNT, totalCount})
+export const totalIsFetching = (isFetching) => ({type: TOTAL_FETCHING, isFetching})
 
 export default usersReducer;

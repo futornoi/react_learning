@@ -4,6 +4,11 @@
 	margin: 0;
 }
 
+.scroll {
+	overflow: scroll;
+	height: 90vh;
+}
+
 .mainInfo {
 	display: flex;
 }
@@ -22,6 +27,7 @@
 	border: 2px solid #83a77f;
 	border-radius: 10px;
 	padding: 10px;
+	box-shadow: 0 0 10px #536d4e;
 }
 
 .avatar img {
@@ -47,6 +53,11 @@
 	border: none;
 	background-color: darkseagreen;
 	font-size: 15px;
+}
+
+.pages {
+	text-align: center;
+	border-bottom: 1px solid dimgrey;
 }
 
 .pages span{

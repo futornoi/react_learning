@@ -1,48 +1,36 @@
 import React from 'react';
-import style from './Users.module.css'
-import s from "../Messages/Messages.module.css";
-import * as axios from 'axios';
-import avatar from '../../assets/images/icon.png'
+import s from '../Messages/Messages.module.css';
+import style from './Users.module.css';
+import avatar from '../../assets/images/icon.png';
+import Preloader from "../common/Preloader/Preloader";
 
 
-class Users extends React.Component{
-   componentDidMount() {
-      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.page}&count=${this.props.count}`).then(response => {
-         this.props.setUsers(response.data.items);
-         // this.props.totalCount(response.data.totalCount);
-      })
+let Users = (props) => {
+   let pages = [];
+   let pagesCount = Math.ceil(props.totalPages / props.count);
+
+   for (let i = 1; i <= pagesCount; i++) {
+      pages.push(i);
    }
 
-   onPageChanger = (pageNumber) => {
-      this.props.pageChanger(pageNumber)
-      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.count}`).then(response => {
-         this.props.setUsers(response.data.items);
-      })
-   }
+   return (
+      <div>
+         <h2 className={s.title}>Users</h2>
 
-   render() {
+         <div className={style.pages}>{
+            pages.map((p) => <span onClick={() => {
+               props.onPageChanger(p)
+            }} className={props.page === p && style.selectedPage}>{p}</span>)
+         }</div>
 
-      let pages = [];
-      let pagesCount = Math.ceil(this.props.totalPages / this.props.count);
+         {props.isFetching ?  <Preloader /> : null}
 
-      for (let i = 1; i <= pagesCount; i++) {
-         pages.push(i);
-      }
-
-      return (
-         <div>
-            <h2 className={s.title}>Users</h2>
-
-            <div className={style.pages}>{
-               pages.map((p) => <span onClick={() => {this.onPageChanger(p)}} className={this.props.page === p && style.selectedPage}>{p}</span>)
-            }</div>
-
-
-            {this.props.users.map((u) => <div className={style.following} key={u.id}>
+         <div className={style.scroll}>
+            {props.users.map((u) => <div className={style.following} key={u.id}>
                <div className={style.mainInfo}>
                   <div>
                      <div className={style.avatar}>
-                        <img src={u.photos.large != null ? u.photos.large : avatar} alt=""/>
+                        <img src={u.photos.small != null ? u.photos.small : avatar} alt=""/>
                      </div>
                   </div>
 
@@ -59,15 +47,20 @@ class Users extends React.Component{
                </div>
                <div>
                   {u.following
-                     ? <button className={style.btn} onClick={() => {this.props.unfollow(u.id)}}>Unfollow</button>
-                     : <button className={style.btn} onClick={() => {this.props.followed(u.id)}}>Follow</button>
+                     ? <button className={style.btn} onClick={() => {
+                        props.unfollow(u.id)
+                     }}>Unfollow</button>
+                     : <button className={style.btn} onClick={() => {
+                        props.followed(u.id)
+                     }}>Follow</button>
                   }
                </div>
             </div>)}
+
          </div>
 
-      )
-   }
+      </div>
+   )
 }
 
-      export default Users;
+export default Users;
