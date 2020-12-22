@@ -3,6 +3,7 @@ import s from '../Messages/Messages.module.css';
 import style from './Users.module.css';
 import avatar from '../../assets/images/icon.png';
 import Preloader from "../common/Preloader/Preloader";
+import {NavLink} from "react-router-dom";
 
 
 let Users = (props) => {
@@ -29,9 +30,9 @@ let Users = (props) => {
             {props.users.map((u) => <div className={style.following} key={u.id}>
                <div className={style.mainInfo}>
                   <div>
-                     <div className={style.avatar}>
+                     <NavLink to={'profile/' + u.id} className={style.avatar}>
                         <img src={u.photos.small != null ? u.photos.small : avatar} alt=""/>
-                     </div>
+                     </NavLink>
                   </div>
 
                   <div className={style.aboutUser}>

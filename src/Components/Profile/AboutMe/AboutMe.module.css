@@ -5,14 +5,18 @@
 }
 /* ! About me */
 .about_me {
-    width: 32%;
+    width: 40%;
     display: flex;
     margin: 10px 0 10px 0;
-    justify-content: space-between;
 }
 .avatar img {
     width: 130px;
 }
+
+.description {
+    margin-left: 20px;
+}
+
 .title {
     font-size: 20px;
     font-weight: 600;
@@ -20,4 +24,14 @@
 .contacts {
     padding: 0;
     list-style-type: none;
+}
+
+h3 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.jobSection {
+    list-style: none;
+    padding: 0;
 }

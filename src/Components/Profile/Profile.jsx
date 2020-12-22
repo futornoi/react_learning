@@ -3,11 +3,11 @@ import AboutMe from "./AboutMe/AboutMe";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
-function Profile() {
+function Profile(props) {
    return (
         <div>
             {/*AboutMe*/}
-            <AboutMe />
+            <AboutMe usersProfile={props.usersProfile}/>
             {/*MyPosts*/}
             <MyPostsContainer />
         </div>

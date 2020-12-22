@@ -3,10 +3,10 @@ import './App.css';
 import { Route } from 'react-router-dom';
 import Header from './Components/Header/Header';
 import Navigation from './Components/Nav/Nav';
-import Profile from './Components/Profile/Profile';
 import News from "./Components/News/News";
 import MessagesContainer from "./Components/Messages/MessagesContainer";
 import UsersContainer from "./Components/Users/UsersContainer";
+import ProfileContainer from "./Components/Profile/ProfileContainer";
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
             <Navigation/>
             <div className="app-wrapper-content">
                 {/*Profile */}
-                <Route path='/profile' render={() => <Profile />}
+                <Route path='/profile/:userId?' render={() => <ProfileContainer />}
                 />
                 {/*Messages*/}
                 <Route path='/messages' render={() => <MessagesContainer />}/>
