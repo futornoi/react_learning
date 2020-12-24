@@ -1,18 +1,18 @@
 import React from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
-import Header from './Components/Header/Header';
 import Navigation from './Components/Nav/Nav';
 import News from "./Components/News/News";
 import MessagesContainer from "./Components/Messages/MessagesContainer";
 import UsersContainer from "./Components/Users/UsersContainer";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
+import HeaderContainer from "./Components/Header/HeaderContainer";
 
 
 function App() {
     return (
         <div className="app-wrapper">
-            <Header/>
+            <HeaderContainer/>
             <Navigation/>
             <div className="app-wrapper-content">
                 {/*Profile */}

@@ -38,7 +38,6 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 usersProfile: action.profile,
-                contacts: {...state.contacts},
             }
         default:
             return state;
