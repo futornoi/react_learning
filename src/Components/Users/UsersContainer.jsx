@@ -1,14 +1,15 @@
 import React from "react";
 import {connect} from "react-redux";
-import {followed, pageChanger, setUsers, totalCount, totalIsFetching, unfollow,} from "../../redux/users-reducer";
-import * as axios from "axios";
+import {following, pageChanger, setUsers, totalCount, totalIsFetching, unfollow,} from "../../redux/users-reducer";
 import Users from "./Users";
+import {usersAPI} from "../../api/api";
 
 
 class UsersContainer extends React.Component {
    componentDidMount() {
       this.props.totalIsFetching(true)
-      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.page}&count=${this.props.count}`).then(response => {
+
+     usersAPI.setUser(this.props.page, this.props.count).then(response => {
          this.props.totalIsFetching(false)
          this.props.setUsers(response.data.items);
          // this.props.totalCount(response.data.totalCount);
@@ -18,7 +19,8 @@ class UsersContainer extends React.Component {
    onPageChanger = (pageNumber) => {
       this.props.totalIsFetching(true)
       this.props.pageChanger(pageNumber)
-      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.count}`).then(response => {
+
+      usersAPI.setUser(pageNumber, this.props.count).then(response => {
          this.props.totalIsFetching(false)
          this.props.setUsers(response.data.items);
       })
@@ -32,7 +34,7 @@ class UsersContainer extends React.Component {
             page={this.props.page}
             onPageChanger={this.onPageChanger}
             unfollow={this.props.unfollow}
-            followed={this.props.followed}
+            following={this.props.following}
             isFetching={this.props.isFetching}
          />
    }
@@ -51,4 +53,4 @@ let mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps, {followed, unfollow, setUsers, pageChanger, totalCount, totalIsFetching,})(UsersContainer);
+export default connect(mapStateToProps, {following, unfollow, setUsers, pageChanger, totalCount, totalIsFetching,})(UsersContainer);

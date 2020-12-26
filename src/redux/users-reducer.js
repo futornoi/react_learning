@@ -23,7 +23,7 @@ const usersReducer = (state = initialState, action) => {
                if(u.id === action.userId) {
                   return {
                      ...u,
-                     following: true,
+                     followed: true,
                   }
                }
                return u;
@@ -36,7 +36,7 @@ const usersReducer = (state = initialState, action) => {
                if(u.id === action.userId) {
                   return {
                      ...u,
-                     following: false,
+                     followed: false,
                   }
                }
                return u;
@@ -68,7 +68,7 @@ const usersReducer = (state = initialState, action) => {
 }
 
 
-export const followed = (userId) => ({type: FOLLOW, userId})
+export const following = (userId) => ({type: FOLLOW, userId})
 export const unfollow = (userId) => ({type: UNFOLLOW, userId})
 export const setUsers = (users) => ({type: SET_USERS, users})
 export const pageChanger = (page) => ({type: PAGE_CHANGER, page})

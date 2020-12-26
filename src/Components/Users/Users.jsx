@@ -4,6 +4,8 @@ import style from './Users.module.css';
 import avatar from '../../assets/images/icon.png';
 import Preloader from "../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
+import * as axios from "axios";
+import {usersAPI} from "../../api/api";
 
 
 let Users = (props) => {
@@ -13,7 +15,6 @@ let Users = (props) => {
    for (let i = 1; i <= pagesCount; i++) {
       pages.push(i);
    }
-
    return (
       <div>
          <h2 className={s.title}>Users</h2>
@@ -24,7 +25,7 @@ let Users = (props) => {
             }} className={props.page === p && style.selectedPage}>{p}</span>)
          }</div>
 
-         {props.isFetching ?  <Preloader /> : null}
+         {props.isFetching ? <Preloader/> : null}
 
          <div className={style.scroll}>
             {props.users.map((u) => <div className={style.following} key={u.id}>
@@ -47,12 +48,21 @@ let Users = (props) => {
                   </div>
                </div>
                <div>
-                  {u.following
+                  {u.followed
                      ? <button className={style.btn} onClick={() => {
-                        props.unfollow(u.id)
+                       usersAPI.unfollowUser(u.id).then(response => {
+                           if (response.data.resultCode === 0) {
+                              props.unfollow(u.id)
+                           }
+                        })
                      }}>Unfollow</button>
+
                      : <button className={style.btn} onClick={() => {
-                        props.followed(u.id)
+                        usersAPI.followUser(u.id).then(response => {
+                           if (response.data.resultCode === 0) {
+                              props.following(u.id)
+                           }
+                        })
                      }}>Follow</button>
                   }
                </div>
