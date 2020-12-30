@@ -8,11 +8,12 @@ const instance = axios.create({
       "API-KEY": "0b9c4dda-69fd-4618-a5bd-e83834b7b6c8"
    },
 })
-
-
 export const usersAPI = {
+
    setUser(page = 1, count = 10) {
-      return instance.get(`users?page=${page}&count=${count}`)
+      return instance.get(`users?page=${page}&count=${count}`).then(response => {
+         return response.data
+      })
    },
 
    unfollowUser(id) {
@@ -26,6 +27,16 @@ export const usersAPI = {
 
 export const authAPI = {
    login() {
-      return instance.get('auth/me')
+      return instance.get('auth/me').then(response => {
+         return response.data
+      })
+   }
+}
+
+export const profileAPI = {
+   profileUser(id = 13271) {
+      return instance.get(`profile/${id}`).then(promises => {
+         return promises.data
+      })
    }
 }

@@ -43,8 +43,8 @@ const messagesReducer = (state = initialStore, action) => {
 }
 
 
-export const sendMessageActionCreator = () => ({type: SEND_MESSAGE});
-export const UpdateNewChatTextActionCreator = (text) => ({type: UPDATE_NEW_CHAT_TEXT, messages: text});
+export const sendMessage = () => ({type: SEND_MESSAGE});
+export const UpdateNewChatText = (text) => ({type: UPDATE_NEW_CHAT_TEXT, messages: text});
 
 
 export default messagesReducer;

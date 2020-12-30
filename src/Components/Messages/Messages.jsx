@@ -14,7 +14,7 @@ function Messages(props) {
 
    let onChangeMessage = (e) => {
       let text = e.target.value;
-      props.onChangeMessage(text);
+      props.UpdateNewChatText(text);
    }
 
    return (

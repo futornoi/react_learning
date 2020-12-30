@@ -55,6 +55,10 @@
 	font-size: 15px;
 }
 
+.btn:disabled {
+	background-color: #839487;
+}
+
 .pages {
 	text-align: center;
 	border-bottom: 1px solid dimgrey;

@@ -4,8 +4,6 @@ import style from './Users.module.css';
 import avatar from '../../assets/images/icon.png';
 import Preloader from "../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
-import {usersAPI} from "../../api/api";
 
 
 let Users = (props) => {
@@ -49,21 +47,8 @@ let Users = (props) => {
                </div>
                <div>
                   {u.followed
-                     ? <button className={style.btn} onClick={() => {
-                       usersAPI.unfollowUser(u.id).then(response => {
-                           if (response.data.resultCode === 0) {
-                              props.unfollow(u.id)
-                           }
-                        })
-                     }}>Unfollow</button>
-
-                     : <button className={style.btn} onClick={() => {
-                        usersAPI.followUser(u.id).then(response => {
-                           if (response.data.resultCode === 0) {
-                              props.following(u.id)
-                           }
-                        })
-                     }}>Follow</button>
+                     ? <button disabled={props.followingIsProgress.some(id => id === u.id)} className={style.btn} onClick={() => {props.unfollow(u.id)}}>Unfollow</button>
+                     : <button disabled={props.followingIsProgress.some(id => id === u.id)} className={style.btn} onClick={() => {props.follow(u.id)}}>Follow</button>
                   }
                </div>
             </div>)}

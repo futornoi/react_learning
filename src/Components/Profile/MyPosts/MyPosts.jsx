@@ -1,6 +1,7 @@
 import React from 'react';
 import Post from './Post/Post';
 import s from './MyPosts.module.css'
+import {updateNewPostText} from "../../../redux/profile-reducer";
 
 
 function MyPosts(props) {
@@ -13,7 +14,7 @@ function MyPosts(props) {
 
    let onChangePost = (e) => {
       let text = e.target.value;
-      props.onChangePost(text);
+      props.updateNewPostText(text);
    }
 
    return (

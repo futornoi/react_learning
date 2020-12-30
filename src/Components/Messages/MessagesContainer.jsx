@@ -1,4 +1,4 @@
-import {sendMessageActionCreator, UpdateNewChatTextActionCreator} from "../../redux/messages-reducer";
+import {sendMessage, UpdateNewChatText} from "../../redux/messages-reducer";
 import Messages from "./Messages";
 import {connect} from "react-redux";
 
@@ -11,13 +11,6 @@ import {connect} from "react-redux";
       }
    };
 
-   let mapDispatchToProps = (dispatch) => {
-      return {
-         sendMessage: () => {dispatch(sendMessageActionCreator())},
-         onChangeMessage: (text) => {dispatch(UpdateNewChatTextActionCreator(text))},
-      }
-   }
-
-   const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages)
+   const MessagesContainer = connect(mapStateToProps, {sendMessage, UpdateNewChatText})(Messages)
 
 export default MessagesContainer;
