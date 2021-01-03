@@ -8,6 +8,7 @@ import {connect} from "react-redux";
          dialogData: state.messagesPage.dialogData,
          chatData: state.messagesPage.chatData,
          newChatText: state.messagesPage.newChatText,
+         signIn: state.auth.signIn,
       }
    };
 

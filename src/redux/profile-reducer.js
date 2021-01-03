@@ -52,7 +52,7 @@ export const updateNewPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, newText
 export const setUsersProfile = (profile) => ({type: SET_USERS_PROFILE, profile})
 
 //ThunkCreator
-export const userProfile = (userId) => {
+export const getUserProfile = (userId) => {
     return (dispatch) => {
         profileAPI.profileUser(userId).then(data => {
             dispatch(setUsersProfile(data))

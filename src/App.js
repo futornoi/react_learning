@@ -7,6 +7,7 @@ import MessagesContainer from "./Components/Messages/MessagesContainer";
 import UsersContainer from "./Components/Users/UsersContainer";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
+import Login from "./Components/Login/Login";
 
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
                 <Route path='/news' render={() => <News />}/>
                 {/*Users*/}
                 <Route path='/users' render={() => <UsersContainer />}/>
+
+                <Route path='/login' render={() => <Login />}/>
             </div>
         </div>
     );

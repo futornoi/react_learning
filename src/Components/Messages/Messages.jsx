@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Messages.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Chat from "./Chat/Chat";
+import {Redirect} from "react-router-dom";
 
 function Messages(props) {
 
@@ -16,6 +17,8 @@ function Messages(props) {
       let text = e.target.value;
       props.UpdateNewChatText(text);
    }
+
+   if(!props.signIn) return <Redirect to='/login'/>;
 
    return (
       <div className={s.messages}>
