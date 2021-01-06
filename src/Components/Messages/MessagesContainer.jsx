@@ -1,6 +1,8 @@
 import {sendMessage, UpdateNewChatText} from "../../redux/messages-reducer";
 import Messages from "./Messages";
 import {connect} from "react-redux";
+import {withLoginRedirect} from "../../hoc/withLoginRedirect";
+import {compose} from "redux";
 
 
    let mapStateToProps = (state) => {
@@ -12,6 +14,7 @@ import {connect} from "react-redux";
       }
    };
 
-   const MessagesContainer = connect(mapStateToProps, {sendMessage, UpdateNewChatText})(Messages)
-
-export default MessagesContainer;
+export default compose(
+   connect(mapStateToProps, {sendMessage, UpdateNewChatText}),
+   withLoginRedirect
+)(Messages);

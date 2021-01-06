@@ -18,8 +18,6 @@ function Messages(props) {
       props.UpdateNewChatText(text);
    }
 
-   if(!props.signIn) return <Redirect to='/login'/>;
-
    return (
       <div className={s.messages}>
          <div className={s.dialogItems}>
