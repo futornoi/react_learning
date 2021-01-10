@@ -12,7 +12,7 @@ export const usersAPI = {
 
    setUser(page = 1, count = 10) {
       return instance.get(`users?page=${page}&count=${count}`).then(response => {
-         return response.data
+         return response.data;
       })
    },
 
@@ -35,8 +35,20 @@ export const authAPI = {
 
 export const profileAPI = {
    profileUser(id = 13271) {
-      return instance.get(`profile/${id}`).then(promises => {
-         return promises.data
+      return instance.get(`profile/${id}`).then(response => {
+         return response.data
+      })
+   },
+
+   profileStatus(id) {
+      return instance.get(`profile/status/${id}`).then(response => {
+         return response.data;
+      })
+   },
+
+   changeProfileStatus(status) {
+      return instance.put(`profile/status`, {status: status}).then(response => {
+         return response.data;
       })
    }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import s from './AboutMe.module.css'
 import Preloader from "../../common/Preloader/Preloader";
 import avatar from '../../../assets/images/icon.png'
+import ProfileStatus from "./ProfileStatus";
 
 function AboutMe(props) {
 
@@ -10,7 +11,6 @@ function AboutMe(props) {
    }
 
    let fullName = props.usersProfile.fullName;
-   let aboutMe = props.usersProfile.aboutMe;
    let photos = props.usersProfile.photos.large;
 
    let {facebook, website, vk, twitter, instagram, youtube, github, mainLink,} = props.usersProfile.contacts
@@ -26,7 +26,9 @@ function AboutMe(props) {
             </div>
             <div className={s.description}>
                <div className={s.title}>{fullName}</div>
-               <div>{aboutMe}</div>
+               <div>
+                  <ProfileStatus status={props.userStatus} putUserStatus={props.putUserStatus}/>
+               </div>
                <ul className={s.contacts}>
                   <h3>Contacts:</h3>
                   {facebook != null ? <li>facebook : {facebook}</li> : ''}
