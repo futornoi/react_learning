@@ -1,4 +1,4 @@
-import {sendMessage, UpdateNewChatText} from "../../redux/messages-reducer";
+import {sendMessage} from "../../redux/messages-reducer";
 import Messages from "./Messages";
 import {connect} from "react-redux";
 import {withLoginRedirect} from "../../hoc/withLoginRedirect";
@@ -15,6 +15,6 @@ import {compose} from "redux";
    };
 
 export default compose(
-   connect(mapStateToProps, {sendMessage, UpdateNewChatText}),
+   connect(mapStateToProps, {sendMessage}),
    withLoginRedirect
 )(Messages);

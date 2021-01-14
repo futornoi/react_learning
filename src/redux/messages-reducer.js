@@ -1,5 +1,4 @@
 const SEND_MESSAGE= 'SEND-MESSAGE';
-const UPDATE_NEW_CHAT_TEXT = 'UPDATE-NEW-CHAT-TEXT';
 
 
 let initialStore = {
@@ -17,7 +16,6 @@ let initialStore = {
         {id: 3, message: 'Abra kadabra'},
         {id: 4, message: 'Abra '},
     ],
-    newChatText: '',
 };
 
 const messagesReducer = (state = initialStore, action) => {
@@ -25,26 +23,19 @@ const messagesReducer = (state = initialStore, action) => {
         case 'SEND-MESSAGE':
             let newMessage = {
                 id: 5,
-                message: state.newChatText,
+                message: action.newChatText,
             }
             return {
                 ...state,
                 chatData: [...state.chatData, newMessage],
-                newChatText: '',
             }
-        case 'UPDATE-NEW-CHAT-TEXT':
-            return {
-                ...state,
-                newChatText: action.messages,
-            };
         default:
             return state;
     }
 }
 
 
-export const sendMessage = () => ({type: SEND_MESSAGE});
-export const UpdateNewChatText = (text) => ({type: UPDATE_NEW_CHAT_TEXT, messages: text});
+export const sendMessage = (newChatText) => ({type: SEND_MESSAGE, newChatText});
 
 
 export default messagesReducer;

@@ -1,0 +1,39 @@
+.container {
+	display: flex;
+	justify-content: center;
+}
+
+.title {
+	text-align: center;
+	font-size: 20px;
+	text-transform: uppercase;
+}
+
+.formInput {
+	padding: 5px;
+	margin: 5px;
+	outline: none;
+	border-radius: 5px;
+	border: 1px solid grey;
+}
+
+.formInput:focus {
+	border-color: darkseagreen;
+	box-shadow: 0 0 5px 2px darkseagreen;
+}
+
+.formBtn {
+	margin-top: 10px;
+	font-size: 20px;
+	width: 100%;
+	background-color: darkseagreen;
+	border: none;
+	border-radius: 5px;
+	outline: none;
+}
+
+.formBtn:focus {
+	box-shadow: 0 0 5px 2px darkseagreen;
+}
+
+

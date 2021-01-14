@@ -1,20 +1,26 @@
 import React from 'react';
 import Post from './Post/Post';
 import s from './MyPosts.module.css'
-import {updateNewPostText} from "../../../redux/profile-reducer";
+import {Field, reduxForm} from "redux-form";
 
+
+const MyPostForm = (props) => {
+   return (
+      <form onSubmit={props.handleSubmit} className={s.post}>
+         <Field component='textarea' placeholder="you news..." name="post" id="post" cols="100" rows="2"/>
+         <button>Send</button>
+      </form>
+   )
+}
+
+const MyPostReduxForm = reduxForm({form: 'messageForm'})(MyPostForm)
 
 function MyPosts(props) {
 
    let postElements = props.postData.map(p => <Post img_src={p.imgSrc} message={p.message} likesCount={p.likesCount}/>);
 
-   let addPost = () => {
-      props.addPost();
-   }
-
-   let onChangePost = (e) => {
-      let text = e.target.value;
-      props.updateNewPostText(text);
+   let addPost = (value) => {
+      props.addPost(value.post);
    }
 
    return (
@@ -23,13 +29,7 @@ function MyPosts(props) {
             <div className={s.title}>
                <label htmlFor="post">My post</label>
             </div>
-            <div className={s.post}>
-               <textarea
-                  placeholder="you news..." name="post" id="post" cols="100" rows="2"
-                  value={props.newPostText}
-                  onChange={onChangePost}/>
-               <button onClick={addPost}>Send</button>
-            </div>
+            <MyPostReduxForm onSubmit={addPost}/>
          </div>
          <div className={s.postItem}>
             {postElements}
