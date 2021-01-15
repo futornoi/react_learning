@@ -3,12 +3,22 @@ import s from './Messages.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Chat from "./Chat/Chat";
 import {Field, reduxForm} from "redux-form";
+import {Element} from "../common/FormsControls/FormsControls";
+import {maxLength, required} from "../../utils/validators/validators";
 
+
+const maxLength100 = maxLength(100);
+const Textarea = Element('textarea')
 
 const MessageForm = (props) => {
+
+
    return (
       <form onSubmit={props.handleSubmit} className={s.sending}>
-         <Field component='textarea' cplaceholder="your message" name="sending" id="sending" cols="70" rows="2" autoFocus/>
+         <Field component={Textarea}
+                placeholder="your message" name="sending" id="sending" cols="70" rows="2"
+                validate={[required, maxLength100]}
+         />
          <button>send</button>
       </form>
    )
@@ -40,7 +50,7 @@ const Messages = (props) => {
             <div className={s.message}>
                {chatElements}
             </div>
-           <MessageReduxForm onSubmit={sendMessage}/>
+            <MessageReduxForm onSubmit={sendMessage}/>
          </div>
 
       </div>

@@ -40,6 +40,7 @@
 
 /*SENDING*/
 .sending {
+	display: flex;
 	position: absolute;
 	bottom: 0;
 }
