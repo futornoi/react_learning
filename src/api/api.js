@@ -26,15 +26,27 @@ export const usersAPI = {
 }
 
 export const authAPI = {
-   login() {
+   me() {
       return instance.get('auth/me').then(response => {
          return response.data
       })
+   },
+
+   loginAPI(email, password, rememberMe) {
+      return instance.post('auth/login', {email, password, rememberMe}).then(response => {
+         return response.data
+      })
+   },
+
+   logoutAPI() {
+      return instance.delete('auth/login')
    }
 }
 
+
+
 export const profileAPI = {
-   profileUser(id = 13271) {
+   profileUser(id) {
       return instance.get(`profile/${id}`).then(response => {
          return response.data
       })

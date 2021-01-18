@@ -18,3 +18,9 @@
     text-decoration: none;
     
 }
+
+.btn {
+    border: none;
+    color: green;
+    font-size: 15px;
+}
