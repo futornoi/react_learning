@@ -12,7 +12,6 @@ import {Redirect} from "react-router-dom";
 const Input = Element('input');
 
 const LoginForm = (props) => {
-debugger
    return (
       <div className={style.container}>
          <form onSubmit={props.handleSubmit}>
