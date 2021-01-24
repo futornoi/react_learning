@@ -2,7 +2,7 @@ import React from 'react';
 import s from './AboutMe.module.css'
 import Preloader from "../../common/Preloader/Preloader";
 import avatar from '../../../assets/images/icon.png'
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHook from "./ProfileStatusWithHook";
 
 function AboutMe(props) {
 
@@ -27,7 +27,7 @@ function AboutMe(props) {
             <div className={s.description}>
                <div className={s.title}>{fullName}</div>
                <div>
-                  <ProfileStatus status={props.userStatus} putUserStatus={props.putUserStatus}/>
+                  <ProfileStatusWithHook status={props.userStatus} putUserStatus={props.putUserStatus}/>
                </div>
                <ul className={s.contacts}>
                   <h3>Contacts:</h3>
