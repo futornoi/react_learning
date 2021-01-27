@@ -16,7 +16,7 @@ class UsersContainer extends React.Component {
    }
 
    render() {
-      console.log('render')
+
       return <Users
          users={this.props.users}
          count={this.props.count}
@@ -33,7 +33,6 @@ class UsersContainer extends React.Component {
 
 
 let mapStateToProps = (state) => {
-   console.log('mapStateToProps')
    return {
       users: getUsers(state),
       count: getCount(state),

@@ -5,7 +5,6 @@ import avatar from '../../../assets/images/icon.png'
 import ProfileStatusWithHook from "./ProfileStatusWithHook";
 
 function AboutMe(props) {
-
    if (!props.usersProfile) {
       return <Preloader/>
    }

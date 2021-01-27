@@ -7,6 +7,7 @@ import {NavLink} from "react-router-dom";
 
 
 let Users = (props) => {
+
    let pages = [];
    let pagesCount = Math.ceil(props.totalPages / props.count);
 
@@ -18,11 +19,13 @@ let Users = (props) => {
       <div>
          <h2 className={s.title}>Users</h2>
 
-         <div className={style.pages}>{
-            pages.map((p) => <span onClick={() => {
-               props.onPageChanger(p)
-            }} className={props.page === p && style.selectedPage}>{p}</span>)
-         }</div>
+         <div className={style.pages}>
+           {
+             pages.map((p) => <span onClick={() => {
+                props.onPageChanger(p)
+             }} className={props.page === p && style.selectedPage}>{p}</span>)
+            }
+         </div>
 
          {props.isFetching ? <Preloader/> : null}
 
@@ -48,8 +51,12 @@ let Users = (props) => {
                </div>
                <div>
                   {u.followed
-                     ? <button disabled={props.followingIsProgress.some(id => id === u.id)} className={style.btn} onClick={() => {props.unfollow(u.id)}}>Unfollow</button>
-                     : <button disabled={props.followingIsProgress.some(id => id === u.id)} className={style.btn} onClick={() => {props.follow(u.id)}}>Follow</button>
+                     ? <button disabled={props.followingIsProgress.some(id => id === u.id)} className={style.btn} onClick={() => {
+                        props.unfollow(u.id)
+                     }}>Unfollow</button>
+                     : <button disabled={props.followingIsProgress.some(id => id === u.id)} className={style.btn} onClick={() => {
+                        props.follow(u.id)
+                     }}>Follow</button>
                   }
                </div>
             </div>)}

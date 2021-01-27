@@ -4,6 +4,7 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
 function Profile(props) {
+
    return (
         <div>
             {/*AboutMe*/}
