@@ -18,7 +18,7 @@ function AboutMe(props) {
 
    return (
       <div>
-         <div className={s.header_img}></div>
+         <div className={s.header_img}/>
          <div className={s.about_me}>
             <div className={s.avatar}>
                <img src={photos != null ? photos : avatar} alt="avatar"/>

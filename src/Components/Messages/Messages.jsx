@@ -28,13 +28,13 @@ const MessageForm = (props) => {
 let MessageReduxForm = reduxForm({form: 'dialogForm'})(MessageForm);
 
 
-const Messages = (props) => {
+const Messages = ({dialogData, chatData, sendMessage}) => {
 
-   let dialogElements = props.dialogData.map(d => <DialogItem id={d.id} name={d.name}/>);
-   let chatElements = props.chatData.map(c => <Chat message={c.message}/>);
+   let dialogElements = dialogData.map(d =><DialogItem key={d.id} id={d.id} name={d.name}/>);
+   let chatElements = chatData.map(c => <Chat key={c.id} message={c.message}/>);
 
-   let sendMessage = (value) => {
-      props.sendMessage(value.sending);
+   let sendMessages = ({sending}) => {
+      sendMessage(sending);
    }
 
    return (
@@ -50,7 +50,7 @@ const Messages = (props) => {
             <div className={s.message}>
                {chatElements}
             </div>
-            <MessageReduxForm onSubmit={sendMessage}/>
+            <MessageReduxForm onSubmit={sendMessages}/>
          </div>
 
       </div>

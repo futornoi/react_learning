@@ -1,4 +1,4 @@
-const SEND_MESSAGE= 'SEND-MESSAGE';
+const SEND_MESSAGE= 'messagesPage/SEND-MESSAGE';
 
 
 let initialStore = {
@@ -20,7 +20,7 @@ let initialStore = {
 
 const messagesReducer = (state = initialStore, action) => {
     switch (action.type) {
-        case 'SEND-MESSAGE':
+        case 'messagesPage/SEND-MESSAGE':
             let newMessage = {
                 id: 5,
                 message: action.newChatText,

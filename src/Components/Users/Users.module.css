@@ -59,19 +59,3 @@
 	background-color: #839487;
 }
 
-.pages {
-	text-align: center;
-	border-bottom: 1px solid dimgrey;
-}
-
-.pages span{
-	padding: 5px;
-	color: #83a77f;
-	font-size: 15px;
-	cursor: pointer;
-}
-
-.pages .selectedPage {
-	font-size: 20px;
-	color: gold;
-}

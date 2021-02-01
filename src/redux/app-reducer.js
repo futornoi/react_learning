@@ -1,6 +1,6 @@
 import {SignIn} from "./auth-reducer";
 
-const INITIALIZATION = 'INITIALIZATION';
+const INITIALIZATION = 'app/INITIALIZATION';
 
 
 
@@ -10,7 +10,7 @@ let initialState = {
 
 const appReducer = (state = initialState, action) => {
    switch (action.type) {
-      case 'INITIALIZATION':
+      case 'app/INITIALIZATION':
          return {
             ...state,
             initialization: true,
