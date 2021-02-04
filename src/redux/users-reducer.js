@@ -83,7 +83,7 @@ export const getUser = (page, count) => {
 
       dispatch(totalIsFetching(false))
       dispatch(setUsers(data.items));
-      // dispatch(totalCount(data.totalCount));
+      dispatch(totalCount(data.totalCount));
    }
 }
 

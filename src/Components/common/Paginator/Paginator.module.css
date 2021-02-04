@@ -14,3 +14,12 @@
 	font-size: 20px;
 	color: gold;
 }
+
+.btn {
+	border: none;
+	outline: none;
+	background-color: inherit;
+	color: darkgreen;
+	font-size: 25px;
+	cursor: pointer;
+}
