@@ -4,8 +4,6 @@ import {Route} from 'react-router-dom';
 import Navigation from './Components/Nav/Nav';
 import News from "./Components/News/News";
 import MessagesContainer from "./Components/Messages/MessagesContainer";
-// import UsersContainer from "./Components/Users/UsersContainer";
-// import ProfileContainer from "./Components/Profile/ProfileContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import Login from "./Components/Login/Login";
 import {connect} from "react-redux";
