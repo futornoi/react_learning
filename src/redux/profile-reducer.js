@@ -4,6 +4,7 @@ const ADD_POST = 'profilePage/ADD-POST';
 const SET_USERS_PROFILE = 'profilePage/SET-USERS-PROFILE';
 const SET_USERS_STATUS = 'profilePage/SET-USERS-STATUS';
 const DELETE_POST = 'profilePage/DELETE-POST';
+const SET_USER_PHOTO = 'profilePage/SET_USER_PHOTO';
 
 
 let initialState = {
@@ -46,6 +47,11 @@ const profileReducer = (state = initialState, action) => {
             ...state,
             userStatus: action.status,
          }
+      case 'settingsPage/SET_USER_PHOTO' :
+         return {
+            ...state,
+            usersProfile: {...state.usersProfile, photos: action.fileName}
+         }
       default:
          return state;
    }
@@ -56,6 +62,7 @@ export const addPost = (newPostText) => ({type: ADD_POST, newPostText})
 export const deletePost = (postId) => ({type: DELETE_POST, postId})
 export const setUsersProfile = (profile) => ({type: SET_USERS_PROFILE, profile})
 export const setUsersStatus = (status) => ({type: SET_USERS_STATUS, status})
+export const setUserPhoto = (fileName) => ({type: SET_USER_PHOTO, fileName})
 
 //ThunkCreator
 export const getUserProfile = (userId) => {

@@ -13,6 +13,7 @@ import {withSuspense} from "./hoc/withSuspense";
 
 const ProfileContainer = React.lazy(() => import("./Components/Profile/ProfileContainer"));
 const UsersContainer = React.lazy(() => import("./Components/Users/UsersContainer"));
+const SettingsContainer = React.lazy(() => import("./Components/Settings/SettingsContainer"));
 
 class App extends React.Component {
 
@@ -38,6 +39,7 @@ class App extends React.Component {
                {/*Users*/}
                <Route path='/users' render={withSuspense(UsersContainer)}/>
                <Route path='/login' render={() => <Login/>}/>
+               <Route path='/settings' render={withSuspense(SettingsContainer)}/>
             </div>
          </div>
       );

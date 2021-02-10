@@ -2,7 +2,7 @@ import React from 'react';
 import s from './AboutMe.module.css'
 import Preloader from "../../common/Preloader/Preloader";
 import avatar from '../../../assets/images/icon.png'
-import ProfileStatusWithHook from "./ProfileStatusWithHook";
+import ProfileStatus from "./ProfileStatus";
 
 function AboutMe(props) {
    if (!props.usersProfile) {
@@ -26,7 +26,7 @@ function AboutMe(props) {
             <div className={s.description}>
                <div className={s.title}>{fullName}</div>
                <div>
-                  <ProfileStatusWithHook status={props.userStatus} putUserStatus={props.putUserStatus}/>
+                  <ProfileStatus status={props.userStatus} putUserStatus={props.putUserStatus}/>
                </div>
                <ul className={s.contacts}>
                   <h3>Contacts:</h3>

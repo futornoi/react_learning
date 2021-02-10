@@ -1,0 +1,15 @@
+.mainSection {
+	width: 70%;
+	margin: 0 auto;
+}
+
+.settingItem h5 {
+	font-weight: 500;
+	font-size: 17px;
+}
+
+.mainSection .settingItem {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
