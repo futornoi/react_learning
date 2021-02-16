@@ -62,6 +62,12 @@ export const profileAPI = {
       return instance.put(`profile/status`, {status: status}).then(response => {
          return response.data;
       })
+   },
+
+   changeProfile(profileData) {
+      return instance.put(`profile`, profileData).then(response => {
+         return response.data;
+      })
    }
 }
 

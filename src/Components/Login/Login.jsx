@@ -24,7 +24,7 @@ const LoginForm = ({handleSubmit, error}) => {
                {createField(null, "checkbox", null, Input, "rememberMe", null, null, 'remember me')}
                {error && <div className={style.error}>{error}</div>}
                <div>
-                  <button className={style.formBtn} type='submit'>submit</button>
+                  <button className={style.formBtn}>submit</button>
                </div>
             </div>
          </form>
@@ -39,6 +39,7 @@ const Login = ({logIn, signIn}) => {
 
    const onSubmit = (value) => {
       logIn(value.email, value.password, value.rememberMe)
+      console.log(value)
    }
 
    if (signIn) return <Redirect to='/profile'/>;

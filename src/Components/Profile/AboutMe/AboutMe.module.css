@@ -5,7 +5,7 @@
 }
 /* ! About me */
 .about_me {
-    width: 40%;
+    width: 60%;
     display: flex;
     margin: 10px 0 10px 0;
 }
@@ -34,4 +34,26 @@ h3 {
 .jobSection {
     list-style: none;
     padding: 0;
+}
+
+.editContact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    border: none;
+    color: grey;
+    background-color: inherit;
+    cursor: pointer;
+    height: 20px;
+    margin-left: 30px;
+    font-size: 16px;
+    transition: 1s ease;
+    outline: none;
+}
+
+.btn:hover {
+    color: #52cd15;
 }

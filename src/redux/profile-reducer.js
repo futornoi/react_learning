@@ -1,4 +1,5 @@
 import {profileAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const ADD_POST = 'profilePage/ADD-POST';
 const SET_USERS_PROFILE = 'profilePage/SET-USERS-PROFILE';
@@ -92,6 +93,21 @@ export const putUserStatus = (status) => {
 
          if(data.resultCode === 0) {
             dispatch(setUsersStatus(status))
+         }
+
+   }
+}
+
+export const putUserProfile = (profileData) => {
+   return async (dispatch, getState) => {
+      const userId = getState().auth.id;
+     let data = await profileAPI.changeProfile(profileData)
+
+         if(data.resultCode === 0) {
+            dispatch(getUserProfile(userId))
+         } else {
+            dispatch(stopSubmit('contacts-form', {_error: data.messages.length > 0 ? data.messages[0] : 'SOME ERROR'}))
+            return Promise.reject(data.messages[0])
          }
 
    }

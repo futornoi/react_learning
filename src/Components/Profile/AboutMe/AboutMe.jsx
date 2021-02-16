@@ -1,20 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from './AboutMe.module.css'
 import Preloader from "../../common/Preloader/Preloader";
 import avatar from '../../../assets/images/icon.png'
 import ProfileStatus from "./ProfileStatus";
+import Contacts from "./Contacts";
+import ContactsReduxForm from "./ContactsForm";
 
-function AboutMe(props) {
-   if (!props.usersProfile) {
+function AboutMe({usersProfile, putUserStatus, isOwner, userStatus, putUserProfile}) {
+
+   const [editMode, setEditMode] = useState(false)
+
+   if (!usersProfile) {
       return <Preloader/>
    }
 
-   let fullName = props.usersProfile.fullName;
-   let photos = props.usersProfile.photos.large;
+   let fullName = usersProfile.fullName;
+   let photos = usersProfile.photos.large;
 
-   let {facebook, website, vk, twitter, instagram, youtube, github, mainLink,} = props.usersProfile.contacts
+   const onSubmit = (formData) => {
+      putUserProfile(formData).then(() => {
+         setEditMode(false)
+      })
+   }
 
-   let {lookingForAJob, lookingForAJobDescription} = props.usersProfile;
 
    return (
       <div>
@@ -26,24 +34,13 @@ function AboutMe(props) {
             <div className={s.description}>
                <div className={s.title}>{fullName}</div>
                <div>
-                  <ProfileStatus status={props.userStatus} putUserStatus={props.putUserStatus}/>
+                  <ProfileStatus status={userStatus} isOwner={isOwner} putUserStatus={putUserStatus}/>
                </div>
-               <ul className={s.contacts}>
-                  <h3>Contacts:</h3>
-                  {facebook != null ? <li>facebook : {facebook}</li> : ''}
-                  {website != null ? <li>website : {website}</li> : ''}
-                  {vk != null ? <li>vk : {vk}</li> : ''}
-                  {twitter != null ? <li>twitter : {twitter}</li> : ''}
-                  {instagram != null ? <li>instagram : {instagram}</li> : ''}
-                  {youtube != null ? <li>youtube : {youtube}</li> : ''}
-                  {github != null ? <li>github : {github}</li> : ''}
-                  {mainLink != null ? <li>mainLink : {mainLink}</li> : ''}
-               </ul>
-               <ul className={s.jobSection}>
-                  <h3>Looking for a job:</h3>
-                  {lookingForAJob === true ? <li>yes</li> : <li>no</li>}
-                  {lookingForAJobDescription != null ? <li>{lookingForAJobDescription}</li> : ''}
-               </ul>
+              <div className={s.editContact}>
+                 {editMode ?
+                    <ContactsReduxForm initialValues={usersProfile} onSubmit={onSubmit} goOutToEditMode={() => {setEditMode(false)}} usersProfile={usersProfile}/> :
+                    <Contacts isOwner={isOwner} goToEditMode={() => {setEditMode(true)}} usersProfile={usersProfile}/>}
+              </div>
             </div>
          </div>
       </div>

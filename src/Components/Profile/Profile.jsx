@@ -8,7 +8,7 @@ function Profile(props) {
    return (
         <div>
             {/*AboutMe*/}
-            <AboutMe usersProfile={props.usersProfile} userStatus={props.userStatus} putUserStatus={props.putUserStatus}/>
+            <AboutMe usersProfile={props.usersProfile} putUserProfile={props.putUserProfile} isOwner={props.isOwner} userStatus={props.userStatus} putUserStatus={props.putUserStatus}/>
             {/*MyPosts*/}
             <MyPostsContainer />
         </div>
