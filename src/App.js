@@ -17,18 +17,10 @@ const SettingsContainer = React.lazy(() => import("./Components/Settings/Setting
 
 class App extends React.Component {
 
-   catchAllUnhandledError = () => {
-      alert('SOME ERRORS')
-   }
-
    componentDidMount() {
       this.props.initializeApp()
-      window.addEventListener('unhandledrejection', this.catchAllUnhandledError)
    }
 
-   componentWillUnmount() {
-      window.removeEventListener('unhandledrejection', this.catchAllUnhandledError)
-   }
 
    render() {
 
