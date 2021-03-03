@@ -7,6 +7,7 @@ import { reducer as formReducer } from 'redux-form'
 import {composeWithDevTools} from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import appReducer from "./app-reducer";
+import newsReducer from "./news-reducer";
 
 
 let reducers = combineReducers({
@@ -15,6 +16,7 @@ let reducers = combineReducers({
    usersPage: usersReducer,
    auth: authReducer,
    app: appReducer,
+   news: newsReducer,
    // settingPage: settingsReducer,
    form: formReducer,
 });

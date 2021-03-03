@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import Navigation from './Components/Nav/Nav';
-import News from "./Components/News/News";
 import MessagesContainer from "./Components/Messages/MessagesContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import Login from "./Components/Login/Login";
@@ -10,6 +9,7 @@ import {connect} from "react-redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./Components/common/Preloader/Preloader";
 import {withSuspense} from "./hoc/withSuspense";
+import NewsContainer from "./Components/News/NewsContainer";
 
 const ProfileContainer = React.lazy(() => import("./Components/Profile/ProfileContainer"));
 const UsersContainer = React.lazy(() => import("./Components/Users/UsersContainer"));
@@ -38,7 +38,7 @@ class App extends React.Component {
                   {/*Messages*/}
                   <Route path='/messages' render={() => <MessagesContainer/>}/>
                   {/* News */}
-                  <Route path='/news' render={() => <News/>}/>
+                  <Route path='/news' render={() => <NewsContainer/>}/>
                   {/*Users*/}
                   <Route path='/users' render={withSuspense(UsersContainer)}/>
                   <Route path='/login' render={() => <Login/>}/>

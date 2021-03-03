@@ -1,0 +1,42 @@
+.form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.image {
+	width: 100%;
+}
+
+h4 {
+	margin: 0 0 5px 0;
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.newsItem {
+	width: 40%;
+	margin: 20px;
+	padding: 10px;
+	border: 1px solid darkolivegreen;
+	border-radius: 5px;
+}
+
+.newsItem * {
+	margin: 10px 0 5px 0;
+}
+
+.newsFooter {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-size: 10px;
+}
+
+.autor {
+	font-weight: 600;
+	font-size: 15px;
+}
