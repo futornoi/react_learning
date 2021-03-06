@@ -1,12 +1,14 @@
 import React from "react";
 import style from './FormsControls.module.css'
 import {Field} from "redux-form";
+import cn from 'classnames';
 
 export const Element = (Element) => ({input, meta: {touched, error}, ...props}) => {
    const hasError = touched && error;
 
    return (
-      <div className={style.formControl + ' ' + (hasError ? style.error : '')}>
+      <div className={cn(style.formControl,
+         {[style.error] : hasError } )}>
          <div>
             <Element {...input} {...props}/>
          </div>
